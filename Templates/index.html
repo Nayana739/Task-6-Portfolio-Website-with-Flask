@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nayana Portfolio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to My Portfolio</h1>
+        <p class="subtitle">Hi, I'm Nayana — a Python Developer and AI enthusiast</p>
+
+        <div class="box" id="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li><b>Languages:</b> Python, HTML, CSS</li>
+                <li><b>Frameworks:</b> Flask, FastAPI</li>
+                <li><b>Tools:</b> Git, GitHub, Postman, VS Code</li>
+                <li><b>Concepts:</b> API development, environment setup, CLI apps</li>
+            </ul>
+        </div>
+
+        <div class="box" id="about">
+            <h2>About Me</h2>
+            <ul>
+                <li>BSc in Computer Science & Statistics</li>
+                <li>Interning in Python Development & Email Marketing</li>
+                <li>Building smart systems, CLI tools, and REST APIs</li>
+            </ul>
+        </div>
+
+        <div class="box" id="projects">
+            <h2>My Internship Mini Projects</h2>
+            <ul>
+                <li>Task 1: CLI Calculator App</li>
+                <li>Task 2: CLI To-Do List App</li>
+                <li>Task 3: News Headline Scraper</li>
+                <li>Task 4: Flask REST API</li>
+                <li>Task 5: FastAPI REST API</li>
+            </ul>
+        </div>
+
+        <div class="buttons">
+    <!-- Resume Download -->
+    <a href="{{ url_for('static', filename='resume.pdf') }}" class="btn" download>
+        My Resume
+    </a>
+
+    <!-- GitHub Link -->
+    <a href="https://github.com/Nayana739" target="_blank" class="btn">
+        My Github Link
+    </a>
+</div>
+
+
+        <div class="contact-box">
+            <h3>Contact Me</h3>
+            <form action="/contact" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                {% for category, message in messages %}
+                  <p class="flash {{ category }}">{{ message }}</p>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
